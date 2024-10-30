@@ -1,0 +1,20 @@
+@for (item of posts; track $index) {
+   <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+         <mat-panel-title> {{item.title}} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{item.content}}</p>
+      <mat-action-row>
+         <button mat-flat-button>EDIT</button>
+         <button mat-button style="background-color: rgb(255, 0, 0); color: aliceblue;" >
+            DELETE</button>
+      </mat-action-row>
+   </mat-expansion-panel>
+}@empty {
+   <p style="text-align: center;">no content available</p>
+}
+<style>
+   mat-expansion-panel{
+      margin: 1rem 0;
+   }
+</style>
