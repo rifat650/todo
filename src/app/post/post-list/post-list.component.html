@@ -6,7 +6,7 @@
       <p>{{item.content}}</p>
       <mat-action-row>
          <button mat-flat-button>EDIT</button>
-         <button mat-button style="background-color: rgb(255, 0, 0); color: aliceblue;" >
+         <button mat-button style="background-color: rgb(255, 0, 0); color: aliceblue;" (click)="onDelete(item.id)" >
             DELETE</button>
       </mat-action-row>
    </mat-expansion-panel>

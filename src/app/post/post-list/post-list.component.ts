@@ -13,7 +13,7 @@ export class PostListComponent implements OnInit,OnDestroy {
 posts:POST[]=[];
 private postSub:Subscription;
 ngOnInit(){
-this.posts=this.postService.getPosts();
+this.postService.getPosts();
 this.postSub=this.postService.getPostUpdateListener()
 .subscribe({
   next:(posts:POST[])=>{this.posts=posts}
@@ -23,5 +23,9 @@ this.postSub=this.postService.getPostUpdateListener()
   ngOnDestroy(){
     this.postSub.unsubscribe()
   }
+
+onDelete(postId:string){
+this.postService.deletePost(postId)
+}
 
 }
