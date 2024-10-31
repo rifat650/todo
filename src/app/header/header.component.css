@@ -1,0 +1,22 @@
+   mat-toolbar-row {
+      background: #0077ff;
+      color: #ffff;
+      display: block;
+      padding: 1rem;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+
+   }
+
+   span {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+   }
+
+   a {
+      text-decoration: none;
+      color: #fff;
+      margin: 0 1rem;
+   }

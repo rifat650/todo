@@ -1,21 +1,37 @@
 <mat-card>
-   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+   @if (!isLoading) {
+   <form (submit)="onSavePost()" [formGroup]="form">
       <mat-form-field>
-         <input type="text" matInput ngModel name="title" required #title="ngModel" placeholder="Post Title">
+         <input type="text" matInput formControlName="title" placeholder="Post Title">
       </mat-form-field>
-      @if (title.invalid && title.touched) {
-               <mat-error>please enter a post title</mat-error>
+      @if (form.get('title').invalid && form.get('title').touched) {
+      <mat-error>
+         please enter a post title
+      </mat-error>
       }
 
+      <div>
+         <button mat-button type="button" (click)="filePicker.click()">pick image</button>
+         <input type="file" style="display: none;" #filePicker (change)="onImagePicked($event)">
+      </div>
 
+      @if (imagePreview && imagePreview!=="" && form.get('image').valid) {
+         <div>
+            <img [src]="imagePreview" alt="">
+         </div>
+      }
       <mat-form-field>
-         <textarea matInput ngModel name="content" required #content="ngModel" placeholder="Post Content"></textarea>
+         <textarea matInput formControlName="content" placeholder="Post Content"></textarea>
       </mat-form-field>
-         @if (content.invalid && content.touched) {
-         <mat-error>please enter a post content</mat-error>
-         }
+      @if (form.get('content').invalid && form.get('content').touched ) {
+      <mat-error>please enter a post content</mat-error>
+      }
 
       <button mat-flat-button type="submit">
          add post </button>
    </form>
+   }@else {
+   <mat-spinner></mat-spinner>
+
+   }
 </mat-card>
