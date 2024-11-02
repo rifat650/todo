@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-const postRoutes=require('./routes/posts')
+const postRoutes=require('./routes/posts');
+const userRoutes=require('./routes/user')
 mongoose.connect(process.env.DB_CONN_STR).then(() => {
    console.log('db connected successfully')
 }).catch((err) => { console.log('connection failed') })
@@ -30,5 +31,6 @@ app.use(bodyParser.urlencoded({extended:false}))
    )
 })*/
 app.use('/api/posts',postRoutes);
+app.use('/api/user',userRoutes)
 
 module.exports = app;

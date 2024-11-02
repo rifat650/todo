@@ -1,7 +1,21 @@
 <mat-toolbar-row>
    <span>
       <a routerLink="/">my massages</a>
+
+      @if (userIsAuthenticated) {
       <a routerLink="/create">New Post</a>
+      }
+
+
+      @if (!userIsAuthenticated) {
+      <a routerLink="/auth/login">login</a>
+      <a routerLink="/auth/signup">signup</a>
+      }
+
+      @if (userIsAuthenticated) {
+      <button mat-button (click)="onLogout()">logout</button>
+      }
+
    </span>
 
 </mat-toolbar-row>

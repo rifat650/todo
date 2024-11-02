@@ -1,47 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostCreateComponent } from './post/post-create/post-create.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterCeptor } from './auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
 import { HeaderComponent } from './header/header.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { ErrorComponent } from './error/error.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { postModule } from './post/post.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
     HttpClientModule,
-    MatProgressSpinnerModule,
-    ReactiveFormsModule,
-    MatPaginatorModule
-
+    AngularMaterialModule,
+    postModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterCeptor,multi:true},
+    { provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor,multi:true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+// entryComponents:[]
 })
 export class AppModule { }

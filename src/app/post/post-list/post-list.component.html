@@ -6,17 +6,22 @@
       </mat-expansion-panel-header>
       <img [src]="item.imagePath" [alt]="item.title">
       <p>{{item.content}}</p>
+ @if (userIsAuthenticated && userId==item.creator) {
       <mat-action-row>
          <a mat-flat-button [routerLink]="['/edit',item.id]">EDIT</a>
          <button mat-button style="background-color: rgb(255, 0, 0); color: aliceblue;" (click)="onDelete(item.id)">
             DELETE</button>
       </mat-action-row>
+ }
    </mat-expansion-panel>
 
    }@empty {
    <p style="text-align: center;">no content available</p>
    }
-      <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" aria-label="Select page" (page)="onChangedPAge($event)">
+      <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+         [pageIndex]="currentPage - 1" 
+         (page)="onChangedPage($event)"
+         aria-label="Select page">
       </mat-paginator>
 
 }@else {
