@@ -50,10 +50,8 @@ export class PostCreateComponent implements OnInit,OnDestroy {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
         this.postId = paramMap.get('postId');
-        //
         this.isLoading = true
         this.postService.getPost(this.postId).subscribe((data) => {
-          //
           this.isLoading = false
           this.post = {
             id: data._id,
@@ -65,7 +63,9 @@ export class PostCreateComponent implements OnInit,OnDestroy {
           this.form.setValue({
             'title': this.post.title, 'content': this.post.content,
             'image':this.post.imagePath
-          })
+          });
+
+          this.imagePreview = data.imagePath
         })
 
       } else {

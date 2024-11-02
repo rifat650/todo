@@ -1,3 +1,26 @@
 mat-spinner{
    margin: 0 auto;
 }
+mat-form-field{
+   display: block;
+}
+button[type="button"]{
+   color: #3c5bf5;
+   font-size: 1.2rem;
+   border: 2px solid #3c5bf5;
+   padding: 10px 18px;
+   background: #e6f6f8;
+   font-weight: 600;
+   text-transform: capitalize;
+   transition: all 0.4s linear;
+   margin: 2rem 0;
+}
+
+mat-card{
+   padding: 2rem 5rem;
+}
+img{
+  width: 100%;
+  object-fit: contain; 
+  margin-bottom: 2rem;
+}

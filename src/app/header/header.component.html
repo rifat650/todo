@@ -3,18 +3,21 @@
       <a routerLink="/">my massages</a>
 
       @if (userIsAuthenticated) {
+     <div class="warper">
       <a routerLink="/create">New Post</a>
+      <button (click)="onLogout()">logout</button>
+     </div>
       }
 
 
       @if (!userIsAuthenticated) {
-      <a routerLink="/auth/login">login</a>
-      <a routerLink="/auth/signup">signup</a>
+<div class="warper">
+         <a routerLink="/auth/login">login</a>
+         <a routerLink="/auth/signup">signup</a>
+</div>
       }
 
-      @if (userIsAuthenticated) {
-      <button mat-button (click)="onLogout()">logout</button>
-      }
+
 
    </span>
 

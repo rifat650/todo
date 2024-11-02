@@ -20,3 +20,20 @@
       color: #fff;
       margin: 0 1rem;
    }
+
+   button {
+      color: #ffffff;
+      border: 2px solid #fff;
+      font-size: 1.2rem;
+      background: #0077ff;
+      font-weight: 300;
+      text-transform: capitalize;
+      border-radius: 1rem;
+      transition: all 0.4s linear;
+      padding: 8px 10px;
+   }
+   button:hover{
+         color: #0077ff;
+            border: 2px solid #0077ff;
+            background: #ffffff;
+   }
